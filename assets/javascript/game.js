@@ -1,5 +1,21 @@
+	
+	//this on click function will stop and go the gifs
+	 $('#showGif').on('click', function(){
+
+	 	console.log('click');
+	var state = $(this).attr('data-state'); 
+	console.log(state);
+	  if ( state == 'still'){
+                $(this).attr('src', $(this).data('animate'));
+                $(this).attr('data-state', 'animate');
+            }else{
+                $(this).attr('src', $(this).data('still'));
+                $(this).attr('data-state', 'still');
+            }
 
 
+            });
+        
 
 // Initial array of movies
 	var movies = ['Ace Ventura', 'Amelie', 'Addams Family','Bettlejuice','Boondock Saints','Eternal Sunshine of the spotless mind','Evil Dead','Fight Club','Kill Bill','Night Of The Living Dead', 'Sin City','Star wars','The shining','Requiem for a dream','pulp Fiction'];
@@ -26,8 +42,7 @@
 		}
 	}
 
-	// This function handles events where one button is clicked
-	function addNewMovie(){
+	//on click function that will add the new movies  that you input
 	$("#addMovie").on('click', function(){
 
 		// This line of code will grab the input from the textbox
@@ -41,11 +56,12 @@
 
 		// We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
 		return false;
+
+
 	});
 
-	}
+
  	//creates a function to display the Gifs//
-	function display(){
 		    $('button').on('click', function() { //when one of the butttons is click//
         var moviedata = $(this).attr('data-name'); //will add the attribute data correspondent
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + moviedata + "&api_key=dc6zaTOxFJmzC&limit=10"; //this line will call giphy API, plus the desired movie, and 10 results
@@ -71,49 +87,26 @@
 
                         var moviesImage = $("<img>"); //create a new image div called moviesImage
                         moviesImage.attr("src",results[i].images.fixed_height_small.url) //asign an attribute from the results and a src to be able to bring that url
-            
+
                         moviesDiv.append(p) //add p to the movieDiv
 
                         moviesDiv.append(moviesImage) //add moviesImage to moviesDiv
 
                         $("#showGif").prepend(moviesDiv) //and at last will add the previous to the Id showGif
 
-                        stopAndGo();
 
                     }
 
             });
     });
 
-	}
-
-	function stopAndGo() {
-
-	 $('<img>').on('click', function(){
 
 
-	var state = $(this).attr('data-state'); 
 
-	  if ( state == 'still'){
-                $(this).attr('src', $(this).data('animate'));
-                $(this).attr('data-state', 'animate');
-            }else{
-                $(this).attr('src', $(this).data('still'));
-                $(this).attr('data-state', 'still');
-            }
-
-
-            });
-        }
-
-	$( document ).ready(function(){ //this function will run the previous create functions
-
-		renderButtons();
-		display();
-		addNewMovie();
+	
 
 
 
 
-    });
+
 
