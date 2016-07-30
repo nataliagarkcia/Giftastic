@@ -2,7 +2,7 @@
 
 
 // Initial array of movies
-	var movies = ['american Pshyco', 'Ace Ventura', 'Amelie', 'Addams Family','Bettlejuice','Boondock Saints','Eternal Sunshine of the spotless mind','Evil Dead','Fight Club','Kill Bill','Night Of The Living Dead', 'Sin City','Star wars','The shining','Requiem for a dream'];
+	var movies = ['Ace Ventura', 'Amelie', 'Addams Family','Bettlejuice','Boondock Saints','Eternal Sunshine of the spotless mind','Evil Dead','Fight Club','Kill Bill','Night Of The Living Dead', 'Sin City','Star wars','The shining','Requiem for a dream','pulp Fiction'];
 
 
 	// Generic function for displaying movie data 
@@ -32,12 +32,12 @@
 
 		// This line of code will grab the input from the textbox
 		var movie = $('#movie-input').val().trim();
-		
+
 		// The movie from the textbox is then added to our array
 		movies.push(movie);
 		
-		// Our array then runs which handles the processing of our movie array
-		renderButtons();
+		// Our array then runs which handles the processing of our movie array, and also will add the data for the infomation to be display
+		renderButtons(); display();
 
 		// We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
 		return false;
@@ -59,6 +59,8 @@
                 console.log(response)
          
                 var results = response.data; //it will choose the information from the response data
+
+                		$('#showGif').empty();//deletes the previous information store inside this div
                
                      for (var i = 0; i < results.length; i++) { //will create a for loop throught the movies array//
 
@@ -68,12 +70,14 @@
 
                         var moviesImage = $("<img>"); //create a new image div called moviesImage
                         moviesImage.attr("src",results[i].images.fixed_height.url) //asign an attribute from the results and a src to be able to bring that url
-
+            
                         moviesDiv.append(p) //add p to the movieDiv
 
                         moviesDiv.append(moviesImage) //add moviesImage to moviesDiv
 
                         $("#showGif").prepend(moviesDiv) //and at last will add the previous to the Id showGif
+
+                        stopAndGo();
 
                     }
 
@@ -82,11 +86,32 @@
 
 	}
 
+	function stopAndGo() {
+
+	 $('<img>').on('click', function(){
+
+
+	var state = $(this).attr('data-state'); 
+
+	  if ( state == 'still'){
+                $(this).attr('src', $(this).data('animate'));
+                $(this).attr('data-state', 'animate');
+            }else{
+                $(this).attr('src', $(this).data('still'));
+                $(this).attr('data-state', 'still');
+            }
+
+
+            });
+        }
+
 	$( document ).ready(function(){ //this function will run the previous create functions
 
 		renderButtons();
 		display();
 		addNewMovie();
+
+
 
 
     });
