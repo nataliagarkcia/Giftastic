@@ -65,11 +65,12 @@
                      for (var i = 0; i < results.length; i++) { //will create a for loop throught the movies array//
 
                         var moviesDiv = $("<div>"); //create a new div name movies Div
+                        moviesDiv.addClass('col-md-3');
                         var p = $("<p>"); 	//will create a <p> 
                         p.text(results[i].rating) //will add some text from the information retrive from the results (rating)
 
                         var moviesImage = $("<img>"); //create a new image div called moviesImage
-                        moviesImage.attr("src",results[i].images.fixed_height.url) //asign an attribute from the results and a src to be able to bring that url
+                        moviesImage.attr("src",results[i].images.fixed_height_small.url) //asign an attribute from the results and a src to be able to bring that url
             
                         moviesDiv.append(p) //add p to the movieDiv
 
