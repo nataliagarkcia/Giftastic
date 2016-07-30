@@ -27,12 +27,12 @@
 	}
 
 	// This function handles events where one button is clicked
-
+	function addNewMovie(){
 	$("#addMovie").on('click', function(){
 
 		// This line of code will grab the input from the textbox
 		var movie = $('#movie-input').val().trim();
-
+		
 		// The movie from the textbox is then added to our array
 		movies.push(movie);
 		
@@ -43,35 +43,37 @@
 		return false;
 	});
 
+	}
+ 	//creates a function to display the Gifs//
 	function display(){
-		    $('button').on('click', function() {
-        var moviedata = $(this).data('data-name');
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + movies[i] + "&api_key=dc6zaTOxFJmzC&limit=10";
+		    $('button').on('click', function() { //when one of the butttons is click//
+        var moviedata = $(this).attr('data-name'); //will add the attribute data correspondent
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + moviedata + "&api_key=dc6zaTOxFJmzC&limit=10"; //this line will call giphy API, plus the desired movie, and 10 results
 
         $.ajax({
                 url: queryURL,
-                method: 'GET'
+                method: 'GET' //will bring the information//
             })
-            .done(function(response) {
+            .done(function(response) { 
                
                 console.log(response)
          
-                var results = response.data;
+                var results = response.data; //it will choose the information from the response data
                
-                     for (var i = 0; i < results.length; i++) {
+                     for (var i = 0; i < results.length; i++) { //will create a for loop throught the movies array//
 
-                        var moviesDiv = $("<div>");
-                        var p = $("<p>");
-                        p.text(results[i].rating)
+                        var moviesDiv = $("<div>"); //create a new div name movies Div
+                        var p = $("<p>"); 	//will create a <p> 
+                        p.text(results[i].rating) //will add some text from the information retrive from the results (rating)
 
-                        var moviesImage = $("<img>");
-                        moviesImage.attr("src",results[i].images.fixed_height.url)
+                        var moviesImage = $("<img>"); //create a new image div called moviesImage
+                        moviesImage.attr("src",results[i].images.fixed_height.url) //asign an attribute from the results and a src to be able to bring that url
 
-                        moviesDiv.append(p)
+                        moviesDiv.append(p) //add p to the movieDiv
 
-                        moviesDiv.append(moviesImage)
+                        moviesDiv.append(moviesImage) //add moviesImage to moviesDiv
 
-                        $("#showGif").prepend(moviesDiv)
+                        $("#showGif").prepend(moviesDiv) //and at last will add the previous to the Id showGif
 
                     }
 
@@ -80,10 +82,11 @@
 
 	}
 
-	$( document ).ready(function(){
+	$( document ).ready(function(){ //this function will run the previous create functions
 
 		renderButtons();
 		display();
+		addNewMovie();
 
 
     });
