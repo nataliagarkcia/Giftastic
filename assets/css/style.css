@@ -1,0 +1,28 @@
+
+.jumbotron{
+	background-color: black;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#mainTitle{
+	font-family: 'Vast Shadow', cursive;
+	color:white;
+	text-align: center;
+}
+
+button{
+	padding:5px 10px 5px 10px;
+	margin:10px 5px 10px 5px;
+	font-family: 'Special Elite', cursive;	
+	font-size: 1.3em;
+	background-color: black;
+	color:white;
+	border-radius: 10px;
+}
+
+button:active{
+	background-color: #777777;
+}
+
+body{
+	background-color: #d8d8b0;
+}

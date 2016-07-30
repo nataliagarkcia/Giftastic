@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!--css reset page-->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--font added-->
+    <link href='https://fonts.googleapis.com/css?family=Vast+Shadow' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+	<!--css linked-->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!--access jquery library-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<!--access the local javascript file-->
+	<script src="assets/javascript/game.js"></script>
+	
+
+
+	<title>Giftastic</title>
+</head>
+<body>
+
+<!--contains the title of the page and is the first div-->
+<div class="jumbotron">
+	<h1 id="mainTitle">Classic Movies</h1>
+</div>
+
+
+<div class="container-fluid">
+
+	<div class="row">
+		
+		<!--contains the buttons-->
+		<div class="col-md-9" id="moviesView">
+			
+
+		</div>
+
+		<div class="col-md-3">
+			<form id="movie-form">
+		    <label for="movie-input">Add a Classic Movie</label>
+		    <input type="text" id="movie-input"><br>
+		    
+		    <!-- Button triggers new movie to be added -->
+		    <input id="addMovie" class="btn btn-default"  type="submit" value="Submit">
+  		</form>	
+		</div>
+
+	</div>
+
+	<div class="row">
+
+	<div class="col-md-2"></div>
+	<!--the movie gif's will go on this div-->
+	<div class="col-md-9" id="showGif">
+
+	</div>
+
+
+</body>
+</html>
