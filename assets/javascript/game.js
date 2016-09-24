@@ -1,22 +1,10 @@
-	
-	//this on click function will stop and go the gifs
-	 $('#showGif').on('click', function(){
 
-	 	console.log('click');
-	var state = $(this).attr('data-state'); 
-	console.log(state);
-	  if ( state == 'still'){
-                $(this).attr('src', $(this).data('animate'));
-                $(this).attr('data-state', 'animate');
-            }else{
-                $(this).attr('src', $(this).data('still'));
-                $(this).attr('data-state', 'still');
-            }
-
-
-            });
-        
-
+$( document ).ready(function() {
+   renderButtons();
+   display();
+   addMovie();
+  ;
+});	
 // Initial array of movies
 	var movies = ['Ace Ventura', 'Amelie', 'Addams Family','Bettlejuice','Boondock Saints','Eternal Sunshine of the spotless mind','Evil Dead','Fight Club','Kill Bill','Night Of The Living Dead', 'Sin City','Star wars','The shining','Requiem for a dream','pulp Fiction'];
 
@@ -42,6 +30,7 @@
 		}
 	}
 
+	function addMovie(){
 	//on click function that will add the new movies  that you input
 	$("#addMovie").on('click', function(){
 
@@ -59,8 +48,8 @@
 
 
 	});
-
-
+}
+	function display(){
  	//creates a function to display the Gifs//
 		    $('button').on('click', function() { //when one of the butttons is click//
         var moviedata = $(this).attr('data-name'); //will add the attribute data correspondent
@@ -93,12 +82,14 @@
                         moviesDiv.append(moviesImage) //add moviesImage to moviesDiv
 
                         $("#showGif").prepend(moviesDiv) //and at last will add the previous to the Id showGif
-
+                        ;
 
                     }
 
             });
     });
+
+		}
 
 
 
